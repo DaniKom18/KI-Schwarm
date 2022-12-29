@@ -12,7 +12,11 @@ public class Vehicle {
 	double[] vel; // Geschwindigkeit
 	final double max_acc; // Maximale Beschleunigung
 	final double max_vel; // Maximale Geschwindigkeit
-	final String color;
+	//Farbe des Vehicles
+	String color;
+
+	//Anzahl der Blauen fänger
+	static int blueCounter = 10;
 
 
 	Vehicle() {
@@ -35,11 +39,15 @@ public class Vehicle {
 		vel[1] = max_vel * Math.random();
 	}
 
-	private String generateColor() {
-		String color;
-		if (Math.random()>0.5) color = "red";
-		else color = "blue";
-		return color;
+	//Wählt die Farbe für ein Vehicle aus
+	public String generateColor() {
+		String team;
+		if (blueCounter == 0)team = "red";
+		else {
+			team = "blue";
+			blueCounter--;
+		}
+		return team;
 	}
 
 	ArrayList<Vehicle> nachbarErmitteln(ArrayList<Vehicle> all, double radius1, double radius2) {
@@ -48,7 +56,12 @@ public class Vehicle {
 			Vehicle v = all.get(i);
 			if (v.id != this.id) {
 				double dist = Math.sqrt(Math.pow(v.pos[0] - this.pos[0], 2) + Math.pow(v.pos[1] - this.pos[1], 2));
-				if (dist >= radius1 && dist < radius2) {
+				//Wenn Fahrzeug Farbe blau hat soll es die Roten nachbar identifizieren die in der nähe sind
+				if (dist >= radius1 && dist < radius2 && v.color.equals("red") && this.color.equals("blue")) {
+					neighbours.add(v);
+				}
+				//Wenn Fahrzeug Farbe rot hat soll es die blauen nachbar identifizieren die in der nähe sind
+				if (dist >= radius1 && dist < radius2 && v.color.equals("blue") && this.color.equals("red")) {
 					neighbours.add(v);
 				}
 			}
@@ -192,13 +205,21 @@ public class Vehicle {
 		double[] acc_dest1 = new double[2];
 		double[] acc_dest2 = new double[2];
 		double[] acc_dest3 = new double[2];
-		double f_zus = 0.15; // 0.05 // 0.15
-		double f_sep = 0.55; // 0.55
-		double f_aus = 0.3; // 0.4
+		double f_zus = 0.8; // 0.05 // 0.15
+		double f_sep = 0.02; // 0.55
+		double f_aus = 0.4; // 0.4
+
+		//Wen Fahrzeug farbe rot hat soll es andere werte bekommen für sep, zus, aus
+		if (this.color.equals("red")) {
+			f_zus = 0.0; // 0.05 // 0.15
+			f_sep = 0.4; // 0.55
+			f_aus = 0.8; // 0.4
+		}
 
 		if (type == 1) {
 			acc_dest = zufall();
-		} else {
+		}
+		else {
 			acc_dest1 = zusammenbleiben(allVehicles);
 			// acc_dest1 = folgen(allVehicles);
 			acc_dest2 = separieren(allVehicles);
@@ -228,7 +249,6 @@ public class Vehicle {
 		pos[0] = pos[0] + vel[0];
 		pos[1] = pos[1] + vel[1];
 
-		
 		position_Umgebung_anpassen_Box();
 	}
 
