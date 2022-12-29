@@ -206,14 +206,14 @@ public class Vehicle {
 		double[] acc_dest2 = new double[2];
 		double[] acc_dest3 = new double[2];
 		double f_zus = 0.8; // 0.05 // 0.15
-		double f_sep = 0.02; // 0.55
+		double f_sep = 0.3; // 0.55
 		double f_aus = 0.4; // 0.4
 
 		//Wen Fahrzeug farbe rot hat soll es andere werte bekommen für sep, zus, aus
 		if (this.color.equals("red")) {
 			f_zus = 0.0; // 0.05 // 0.15
-			f_sep = 0.4; // 0.55
-			f_aus = 0.8; // 0.4
+			f_sep = 0.2; // 0.55
+			f_aus = 0.2; // 0.4
 		}
 
 		if (type == 1) {

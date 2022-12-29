@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Simulation extends JFrame {
 	static int sleep = 8; // 8
 	static double pix = 0.2;// 0.2
-	int anzFz = 60;//160
+	int anzFz = 80;//160
 	ArrayList<Vehicle> allVehicles = new ArrayList<Vehicle>();
 	JPanel canvas = new Canvas(allVehicles, pix);
 
@@ -16,8 +16,7 @@ public class Simulation extends JFrame {
 
 		for (int k = 0; k < anzFz; k++) {
 			Vehicle car = new Vehicle();
-			if (k == 0)
-				car.type = 1;
+			//if (k == 0) car.type = 1; roter Kreis
 			allVehicles.add(car);
 		}
 
