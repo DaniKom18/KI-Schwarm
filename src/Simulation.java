@@ -35,13 +35,16 @@ public class Simulation extends JFrame {
 		Vehicle v;
 
 		while (true) {
-			boolean gameOver = true;
+			boolean gameOverRed = true;
+			boolean gameOverBlue = true;
+
 			for (int i = 0; i < allVehicles.size(); i++) {
 				v = allVehicles.get(i);
 				v.steuern(allVehicles);
 
 				//Wenn es noch rote Vehicle im spiel gibt läuft das spiel noch
-				if (v.color.equals("red")) gameOver=false;
+				if (v.color.equals("red")) gameOverRed = false;
+				if (v.color.equals("blue")) gameOverBlue = false;
 
 				//Iterration durch alle Vehicle
 				for (int j = 0; j < allVehicles.size(); j++) {
@@ -51,8 +54,9 @@ public class Simulation extends JFrame {
 					//schaut nach ob v1 und v2 gleiche pos haben
 					if ((int)v.pos[0] == (int)v2.pos[0] && (int)v.pos[1] == (int)v2.pos[1]){
 						//schaut nach wer farbe rot hat und wer farbe blau und zerstört immer das Rote
-						if (v.color.equals("red") && v2.color.equals("blue")) allVehicles.remove(v);
-						else if (v.color.equals("blue") && v2.color.equals("red")) allVehicles.remove(v2);
+						if (v.color.equals("blue") && v2.color.equals("red")) allVehicles.remove(v2);
+						//schaut nach ob ein blaues Vehicle ein Schwarzes berührt und zerstört im anschluss das Blaue
+						else if (v.color.equals("blue") && v2.color.equals("black")) allVehicles.remove(v);
 					}
 				}
 
@@ -64,7 +68,16 @@ public class Simulation extends JFrame {
 			}
 			repaint();
 			//wenn kein Rotes Vehicle mehr vorhanden ist dann game over und programm schließt
-			if (gameOver) System.exit(0);
+			if (gameOverRed){
+				gameOverSelectWinningTeam("Blue");
+			} else if (gameOverBlue) {
+				gameOverSelectWinningTeam("Red");
+			}
 		}
+	}
+	public void gameOverSelectWinningTeam(String teamColor){
+		StringBuilder winningTeam = new StringBuilder("The winning Team is: ");
+		System.out.println(winningTeam.append(teamColor));
+		System.exit(0);
 	}
 }

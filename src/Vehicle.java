@@ -17,6 +17,8 @@ public class Vehicle {
 
 	//Anzahl der Blauen fänger
 	static int blueCounter = 10;
+	//Anzahl der Schwarzen Vehicles
+	static int blackCounter = 5;
 
 
 	Vehicle() {
@@ -42,11 +44,15 @@ public class Vehicle {
 	//Wählt die Farbe für ein Vehicle aus
 	public String generateColor() {
 		String team;
-		if (blueCounter == 0)team = "red";
-		else {
+		if (blackCounter != 0) {
+			team = "black";
+			blackCounter--;
+		} else if (blueCounter!=0) {
 			team = "blue";
 			blueCounter--;
 		}
+		else team = "red";
+
 		return team;
 	}
 

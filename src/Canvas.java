@@ -56,6 +56,7 @@ public class Canvas extends JPanel {
       		
           	
           	if(fz.type==1 || fz.color.equals("red"))g2d.setColor(Color.RED);
+			else if (fz.color.equals("black")) g2d.setColor(Color.BLACK);
 			else g2d.setColor(Color.BLUE);
         	g2d.draw(q);
     		
