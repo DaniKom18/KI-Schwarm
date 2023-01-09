@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b6eacd2-cb87-492e-a0bc-56b56d397a2f" name="Changes" comment="Programm fertig">
+    <list default="true" id="9b6eacd2-cb87-492e-a0bc-56b56d397a2f" name="Changes" comment="added Black Vehicle that destroys blue Vehicle">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Canvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vehicle.java" afterDir="false" />
     </list>
@@ -45,6 +45,20 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="Simulation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Simulation" />
+      <module name="KI-Schwaerme" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Simulation" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -59,7 +73,10 @@
       <workItem from="1670918504135" duration="3000" />
       <workItem from="1672250517611" duration="4172000" />
       <workItem from="1672322530182" duration="6631000" />
-      <workItem from="1672401602715" duration="1538000" />
+      <workItem from="1672401602715" duration="1720000" />
+      <workItem from="1672509642924" duration="3000" />
+      <workItem from="1673254148197" duration="3789000" />
+      <workItem from="1673258874625" duration="1694000" />
     </task>
     <task id="LOCAL-00001" summary="randome blue and red Vehicles">
       <created>1672251907206</created>
@@ -82,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672338927998</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added Black Vehicle that destroys blue Vehicle">
+      <created>1672403276065</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1672403276065</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +126,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="randome blue and red Vehicles" />
     <MESSAGE value="Programm fertig" />
-    <option name="LAST_COMMIT_MESSAGE" value="Programm fertig" />
+    <MESSAGE value="added Black Vehicle that destroys blue Vehicle" />
+    <option name="LAST_COMMIT_MESSAGE" value="added Black Vehicle that destroys blue Vehicle" />
   </component>
 </project>

@@ -18,7 +18,7 @@ public class Vehicle {
 	//Anzahl der Blauen fänger
 	static int blueCounter = 10;
 	//Anzahl der Schwarzen Vehicles
-	static int blackCounter = 5;
+	static int blackCounter = 10;
 
 
 	Vehicle() {
@@ -216,6 +216,7 @@ public class Vehicle {
 		double f_aus = 0.4; // 0.4
 
 		//Wen Fahrzeug farbe rot hat soll es andere werte bekommen für sep, zus, aus
+		//TODO Math-random bestimmt welche werte ein Rotes bekommt
 		if (this.color.equals("red")) {
 			f_zus = 0.0; // 0.05 // 0.15
 			f_sep = 0.2; // 0.55

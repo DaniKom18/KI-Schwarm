@@ -38,6 +38,10 @@ public class Simulation extends JFrame {
 			boolean gameOverRed = true;
 			boolean gameOverBlue = true;
 
+			//Schwarm kann lernen und werte verändern sich nach jeder Iterration
+			//TODO Blau fungiert besser als Schwarm
+			//TODO Rot lernt aus fehlern und kann besser abhauen #Werte anpassen falls ein Roter stirbt
+			//TODO Rote die im Radius des Todes von einem roten in der Nähe waren verändern ihre Werte
 			for (int i = 0; i < allVehicles.size(); i++) {
 				v = allVehicles.get(i);
 				v.steuern(allVehicles);
