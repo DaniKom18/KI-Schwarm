@@ -36,9 +36,7 @@ public class Simulation extends JFrame {
 
 		while (true) {
 			boolean gameOverRed = true;
-			boolean gameOverBlue = true;
 
-			//Schwarm kann lernen und werte verändern sich nach jeder Iterration
 			//TODO Blau fungiert besser als Schwarm
 			//TODO Rot lernt aus fehlern und kann besser abhauen #Werte anpassen falls ein Roter stirbt
 			//TODO Rote die im Radius des Todes von einem roten in der Nähe waren verändern ihre Werte
@@ -48,7 +46,6 @@ public class Simulation extends JFrame {
 
 				//Wenn es noch rote Vehicle im spiel gibt läuft das spiel noch
 				if (v.color.equals("red")) gameOverRed = false;
-				if (v.color.equals("blue")) gameOverBlue = false;
 
 				//Iterration durch alle Vehicle
 				for (int j = 0; j < allVehicles.size(); j++) {
@@ -58,9 +55,10 @@ public class Simulation extends JFrame {
 					//schaut nach ob v1 und v2 gleiche pos haben
 					if ((int)v.pos[0] == (int)v2.pos[0] && (int)v.pos[1] == (int)v2.pos[1]){
 						//schaut nach wer farbe rot hat und wer farbe blau und zerstört immer das Rote
-						if (v.color.equals("blue") && v2.color.equals("red")) allVehicles.remove(v2);
-						//schaut nach ob ein blaues Vehicle ein Schwarzes berührt und zerstört im anschluss das Blaue
-						else if (v.color.equals("blue") && v2.color.equals("black")) allVehicles.remove(v);
+						if (v.color.equals("blue") && v2.color.equals("red")) {
+							v2.deltaBerechnen(allVehicles);
+							allVehicles.remove(v2);
+						}
 					}
 				}
 
@@ -74,8 +72,6 @@ public class Simulation extends JFrame {
 			//wenn kein Rotes Vehicle mehr vorhanden ist dann game over und programm schließt
 			if (gameOverRed){
 				gameOverSelectWinningTeam("Blue");
-			} else if (gameOverBlue) {
-				gameOverSelectWinningTeam("Red");
 			}
 		}
 	}

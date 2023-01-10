@@ -15,10 +15,15 @@ public class Vehicle {
 	//Farbe des Vehicles
 	String color;
 
+	static int counter = 0;
+	double deltaSeparieren = 0;
+	double deltaZusammenbleiben = 0;
+	double deltaAusrichten = 0;
+
 	//Anzahl der Blauen fänger
 	static int blueCounter = 10;
-	//Anzahl der Schwarzen Vehicles
-	static int blackCounter = 10;
+
+
 
 
 	Vehicle() {
@@ -44,10 +49,7 @@ public class Vehicle {
 	//Wählt die Farbe für ein Vehicle aus
 	public String generateColor() {
 		String team;
-		if (blackCounter != 0) {
-			team = "black";
-			blackCounter--;
-		} else if (blueCounter!=0) {
+		if (blueCounter!=0) {
 			team = "blue";
 			blueCounter--;
 		}
@@ -67,7 +69,7 @@ public class Vehicle {
 					neighbours.add(v);
 				}
 				//Wenn Fahrzeug Farbe rot hat soll es die blauen nachbar identifizieren die in der nähe sind
-				if (dist >= radius1 && dist < radius2 && v.color.equals("blue") && this.color.equals("red")) {
+				if (dist >= radius1 && dist < radius2 && v.color.equals("red") && this.color.equals("red")) {
 					neighbours.add(v);
 				}
 			}
@@ -211,16 +213,16 @@ public class Vehicle {
 		double[] acc_dest1 = new double[2];
 		double[] acc_dest2 = new double[2];
 		double[] acc_dest3 = new double[2];
-		double f_zus = 0.8; // 0.05 // 0.15
-		double f_sep = 0.3; // 0.55
-		double f_aus = 0.4; // 0.4
+		double f_zus = 0.5; // 0.05 // 0.15
+		double f_sep = 0.4; // 0.55
+		double f_aus = 0.6; // 0.4
 
 		//Wen Fahrzeug farbe rot hat soll es andere werte bekommen für sep, zus, aus
 		//TODO Math-random bestimmt welche werte ein Rotes bekommt
 		if (this.color.equals("red")) {
-			f_zus = 0.0; // 0.05 // 0.15
-			f_sep = 0.2; // 0.55
-			f_aus = 0.2; // 0.4
+			f_zus = deltaZusammenbleiben; // 0.05 // 0.15
+			f_sep = deltaSeparieren; // 0.55
+			f_aus = deltaAusrichten; // 0.4
 		}
 
 		if (type == 1) {
@@ -351,5 +353,21 @@ public class Vehicle {
 		return erg;
 	}
 
+	public void deltaBerechnen(ArrayList<Vehicle> all){
+		double radius = 25;
+
+		ArrayList<Vehicle> nachbarn = nachbarErmitteln(all, 0, radius);
+		for (int i = 0; i < nachbarn.size(); i++) {
+			Vehicle v = nachbarn.get(i);
+			if (v.color.equals("red")) {
+				v.deltaSeparieren = 0.2 + (this.deltaSeparieren+v.deltaSeparieren)/2;
+				v.deltaAusrichten = 0.1 + (this.deltaAusrichten+v.deltaAusrichten)/2;
+				v.deltaZusammenbleiben = 0.05 + (this.deltaZusammenbleiben+v.deltaZusammenbleiben)/2;
+
+				counter++;
+				System.out.println("changed values of Vehile number: " + v.id +" new values: " + v.deltaAusrichten +" : " + v.deltaZusammenbleiben + " : " + v.deltaSeparieren);
+			}
+		}
+	}
 	
 }
