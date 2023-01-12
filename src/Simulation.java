@@ -38,8 +38,7 @@ public class Simulation extends JFrame {
 			boolean gameOverRed = true;
 
 			//TODO Blau fungiert besser als Schwarm
-			//TODO Rot lernt aus fehlern und kann besser abhauen #Werte anpassen falls ein Roter stirbt
-			//TODO Rote die im Radius des Todes von einem roten in der Nähe waren verändern ihre Werte
+			//TODO Blaues Vehicle lernt nach einer bestimmten Zeit wenn kein rotes mehr vernichtet wurde
 			for (int i = 0; i < allVehicles.size(); i++) {
 				v = allVehicles.get(i);
 				v.steuern(allVehicles);
@@ -56,6 +55,7 @@ public class Simulation extends JFrame {
 					if ((int)v.pos[0] == (int)v2.pos[0] && (int)v.pos[1] == (int)v2.pos[1]){
 						//schaut nach wer farbe rot hat und wer farbe blau und zerstört immer das Rote
 						if (v.color.equals("blue") && v2.color.equals("red")) {
+							//Rote Vehicle die in der Nähe von dem zerstörten Vehicle waren lernen
 							v2.deltaBerechnen(allVehicles);
 							allVehicles.remove(v2);
 						}

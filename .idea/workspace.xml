@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b6eacd2-cb87-492e-a0bc-56b56d397a2f" name="Changes" comment="Added TO-DO's">
+    <list default="true" id="9b6eacd2-cb87-492e-a0bc-56b56d397a2f" name="Changes" comment="deltaBerchnen() hinzugefügt&#10;jedes Rote Vehicle lernt für sich nach dem Tod eines gefallen bruders">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vehicle.java" afterDir="false" />
@@ -77,7 +77,14 @@
       <workItem from="1673254148197" duration="3789000" />
       <workItem from="1673258874625" duration="1783000" />
       <workItem from="1673291522485" duration="145000" />
-      <workItem from="1673347281521" duration="9169000" />
+      <workItem from="1673347281521" duration="11055000" />
+      <workItem from="1673371567831" duration="4000" />
+      <workItem from="1673371631258" duration="4000" />
+      <workItem from="1673443558956" duration="607000" />
+      <workItem from="1673445012427" duration="1048000" />
+      <workItem from="1673456423623" duration="2000" />
+      <workItem from="1673456428269" duration="2006000" />
+      <workItem from="1673539913158" duration="325000" />
     </task>
     <task id="LOCAL-00001" summary="randome blue and red Vehicles">
       <created>1672251907206</created>
@@ -114,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673274182123</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="deltaBerchnen() hinzugefügt&#10;jedes Rote Vehicle lernt für sich nach dem Tod eines gefallen bruders">
+      <created>1673356566842</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1673356566842</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,6 +150,7 @@
     <MESSAGE value="Programm fertig" />
     <MESSAGE value="added Black Vehicle that destroys blue Vehicle" />
     <MESSAGE value="Added TO-DO's" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added TO-DO's" />
+    <MESSAGE value="deltaBerchnen() hinzugefügt&#10;jedes Rote Vehicle lernt für sich nach dem Tod eines gefallen bruders" />
+    <option name="LAST_COMMIT_MESSAGE" value="deltaBerchnen() hinzugefügt&#10;jedes Rote Vehicle lernt für sich nach dem Tod eines gefallen bruders" />
   </component>
 </project>

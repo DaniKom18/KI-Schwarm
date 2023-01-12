@@ -65,11 +65,12 @@ public class Vehicle {
 			if (v.id != this.id) {
 				double dist = Math.sqrt(Math.pow(v.pos[0] - this.pos[0], 2) + Math.pow(v.pos[1] - this.pos[1], 2));
 				//Wenn Fahrzeug Farbe blau hat soll es die Roten nachbar identifizieren die in der nähe sind
+				//TODO WARNING: Blaues Vehicle indentifiziert nun Rote und Blaue Vehicle
 				if (dist >= radius1 && dist < radius2 && v.color.equals("red") && this.color.equals("blue")) {
 					neighbours.add(v);
 				}
 				//Wenn Fahrzeug Farbe rot hat soll es die blauen nachbar identifizieren die in der nähe sind
-				if (dist >= radius1 && dist < radius2 && v.color.equals("red") && this.color.equals("red")) {
+				if (dist >= radius1 && dist < radius2 && this.color.equals("red")) {
 					neighbours.add(v);
 				}
 			}
@@ -214,8 +215,8 @@ public class Vehicle {
 		double[] acc_dest2 = new double[2];
 		double[] acc_dest3 = new double[2];
 		double f_zus = 0.5; // 0.05 // 0.15
-		double f_sep = 0.4; // 0.55
-		double f_aus = 0.6; // 0.4
+		double f_sep = 0.1; // 0.55
+		double f_aus = 0.8; // 0.4
 
 		//Wen Fahrzeug farbe rot hat soll es andere werte bekommen für sep, zus, aus
 		//TODO Math-random bestimmt welche werte ein Rotes bekommt
@@ -361,13 +362,11 @@ public class Vehicle {
 			Vehicle v = nachbarn.get(i);
 			if (v.color.equals("red")) {
 				v.deltaSeparieren = 0.2 + (this.deltaSeparieren+v.deltaSeparieren)/2;
-				v.deltaAusrichten = 0.1 + (this.deltaAusrichten+v.deltaAusrichten)/2;
-				v.deltaZusammenbleiben = 0.05 + (this.deltaZusammenbleiben+v.deltaZusammenbleiben)/2;
-
-				counter++;
+				v.deltaAusrichten = 0.05 + (this.deltaAusrichten+v.deltaAusrichten)/2;
+				v.deltaZusammenbleiben = -0.05 + (this.deltaZusammenbleiben+v.deltaZusammenbleiben)/2;
 				System.out.println("changed values of Vehile number: " + v.id +" new values: " + v.deltaAusrichten +" : " + v.deltaZusammenbleiben + " : " + v.deltaSeparieren);
 			}
-		}
+			}
 	}
 	
 }
