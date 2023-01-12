@@ -69,7 +69,7 @@ public class Vehicle {
 				if (dist >= radius1 && dist < radius2 && v.color.equals("red") && this.color.equals("blue")) {
 					neighbours.add(v);
 				}
-				//Wenn Fahrzeug Farbe rot hat soll es die blauen nachbar identifizieren die in der nähe sind
+				//Rotes Fahrzeug identidiziert all seine nachbarn unabhängig von der Farbe
 				if (dist >= radius1 && dist < radius2 && this.color.equals("red")) {
 					neighbours.add(v);
 				}
