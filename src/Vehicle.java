@@ -12,6 +12,7 @@ public class Vehicle {
 	double[] vel; // Geschwindigkeit
 	final double max_acc; // Maximale Beschleunigung
 	final double max_vel; // Maximale Geschwindigkeit
+	boolean isLeader = false;
 	//Farbe des Vehicles
 	String color;
 
@@ -50,9 +51,11 @@ public class Vehicle {
 	public String generateColor() {
 		String team;
 		if (blueCounter!=0) {
+			if(blueCounter == 10) isLeader = true;
 			team = "blue";
 			blueCounter--;
 		}
+
 		else team = "red";
 
 		return team;
@@ -66,11 +69,14 @@ public class Vehicle {
 				double dist = Math.sqrt(Math.pow(v.pos[0] - this.pos[0], 2) + Math.pow(v.pos[1] - this.pos[1], 2));
 				//Wenn Fahrzeug Farbe blau hat soll es die Roten nachbar identifizieren die in der nähe sind
 				//TODO WARNING: Blaues Vehicle indentifiziert nun Rote und Blaue Vehicle
-				if (dist >= radius1 && dist < radius2 && v.color.equals("red") && this.color.equals("blue")) {
+				if (dist >= radius1 && dist < radius2 && v.color.equals("red") && this.color.equals("blue") && isLeader) {
 					neighbours.add(v);
 				}
 				//Rotes Fahrzeug identidiziert all seine nachbarn unabhängig von der Farbe
 				if (dist >= radius1 && dist < radius2 && this.color.equals("red")) {
+					neighbours.add(v);
+				}
+				if(this.color.equals("blue") && !isLeader && v.color.equals("blue")){
 					neighbours.add(v);
 				}
 			}
@@ -149,7 +155,7 @@ public class Vehicle {
 				vel[0] = v.pos[0] - pos[0];
 				vel[1] = v.pos[1] - pos[1];
 				dist   = rad_sep  - Vektorrechnung.length(vel);
-				if (dist < 0)System.out.println("fehler in rad");
+				//if (dist < 0)System.out.println("fehler in rad");
 				vel = Vektorrechnung.normalize(vel);
 				vel[0] = -vel[0] * dist;
 				vel[1] = -vel[1] * dist;
@@ -214,9 +220,10 @@ public class Vehicle {
 		double[] acc_dest1 = new double[2];
 		double[] acc_dest2 = new double[2];
 		double[] acc_dest3 = new double[2];
-		double f_zus = 0.5; // 0.05 // 0.15
-		double f_sep = 0.1; // 0.55
-		double f_aus = 0.8; // 0.4
+		double f_zus = 0.1; // 0.05 // 0.15
+		double f_sep = 3; // 0.55
+		double f_aus = 0.9; // 0.4
+
 
 		//Wen Fahrzeug farbe rot hat soll es andere werte bekommen für sep, zus, aus
 		//TODO Math-random bestimmt welche werte ein Rotes bekommt
@@ -224,6 +231,11 @@ public class Vehicle {
 			f_zus = deltaZusammenbleiben; // 0.05 // 0.15
 			f_sep = deltaSeparieren; // 0.55
 			f_aus = deltaAusrichten; // 0.4
+		}
+		if (this.color.equals("blue")&& isLeader) {
+			f_zus = 5; // 0.05 // 0.15
+			f_sep = 0.1; // 0.55
+			f_aus = 5; // 0.4
 		}
 
 		if (type == 1) {
